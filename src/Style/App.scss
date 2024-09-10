@@ -1,0 +1,305 @@
+// Variables (if you have any)
+$background-color: #ffffff;
+$active-color: #A2CA71;
+$menu-divider-color1: #A2CA71;
+$menu-divider-color2: #387F39;
+$header-gradiant1: #eaffcfaf;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    width: 100%;
+    background: $background-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.385);
+
+    .logo {
+        padding: 10px;
+
+        .nav-logo {
+            width: 120px;
+        }
+    }
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+
+        .navlinks {
+            display: flex;
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s ease all;
+
+            li {
+                margin-right: 18px;
+
+                &:hover .menu-divider {
+                    width: 100%;
+                }
+            }
+
+            .menu-divider {
+                width: 0%;
+                height: 3px;
+                background-image: linear-gradient(to right, $menu-divider-color1, $menu-divider-color2);
+                border-radius: 50px;
+                transition: 0.5s ease all;
+
+                &.active {
+                    width: 100%;
+                }
+            }
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            margin-left: 25px;
+
+            .menu-icons {
+                width: 18px;
+                margin-right: 18px;
+            }
+        }
+
+        .menu-open {
+            display: none;
+            align-items: center;
+            padding: 10px;
+
+            .menu-open-icon {
+                width: 25px;
+            }
+        }
+
+        .menu-close {
+            display: none;
+
+            .menu-close-icon {
+                width: 25px;
+            }
+        }
+    }
+}
+
+.cart {
+    position: relative;
+
+    .cart-total {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        color: white;
+        position: absolute;
+        top: 0px;
+        right: -6px;
+        font-size: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.search-btn {
+    cursor: pointer;
+}
+
+// Header start
+.header {
+    width: 100%;
+    height: 90vh;
+    background-image: linear-gradient($header-gradiant1, rgb(255, 255, 255));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .left,
+    .right {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    h1 {
+        font-weight: bold;
+    }
+
+    .header-welcome {
+        margin-bottom: 10px;
+    }
+
+    .custom-btn {
+        padding: 10px;
+        background-image: linear-gradient($menu-divider-color1, $menu-divider-color2);
+        border: 0;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-top: 40px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        transition: 0.3s ease all;
+
+        &:hover {
+            background-image: linear-gradient($menu-divider-color2, $menu-divider-color1);
+            letter-spacing: 3px;
+        }
+    }
+
+    // Responsive Design
+    @media screen and (max-width: 991px) {
+        height: 50vh;
+    }
+
+    @media screen and (max-width: 810px) {
+        .right {
+            width: 30%;
+        }
+
+        .left {
+            width: 70%;
+        }
+
+        height: 30vh;
+    }
+
+    @media screen and (max-width: 590px) {
+        h6 {
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 15px;
+        }
+
+        p {
+            font-size: 10px;
+        }
+
+        .custom-btn {
+            margin-top: 25px;
+        }
+    }
+}
+
+// Header end
+.product-card {
+    overflow: hidden;
+
+    .product-image {
+        height: 200px;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1); // Scales the image on hover
+        }
+    }
+
+    .card-title {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .card-desc {
+        height: 45px;
+        font-size: 12px;
+    }
+}
+
+
+// Footer start
+.footer {
+    background-image: linear-gradient(rgb(255, 255, 255), $header-gradiant1);
+    color: #fff;
+
+    .footer-description {
+        font-size: 12px;
+    }
+
+    .social-icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .after-footer {
+        font-size: 12px;
+    }
+}
+
+// Footer end
+
+// Responsive Design
+@media screen and (max-width: 991px) {
+    .navbar {
+
+        .nav-menu {
+
+            display: flex;
+            align-items: center;
+
+            .navlinks {
+                width: 100%;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.766) !important;
+                backdrop-filter: blur(5px);
+                z-index: 99;
+
+                li {
+                    margin-top: 12px;
+                }
+
+                &.close {
+                    left: -120%;
+                }
+
+                &.open {
+                    left: 0;
+                }
+            }
+
+            .menu-open {
+                display: flex;
+
+                .menu-open-icon {
+                    width: 25px;
+                }
+            }
+
+            .menu-close {
+                display: flex;
+                position: absolute;
+                top: 11px;
+                right: 13px;
+            }
+        }
+
+    }
+}
