@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import * as Icon from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext';
 
 const ProductCard = ({ product }) => {
+
+  const { addToCart } = useContext(CartContext);
+
   // Function to limit the title to 4 words
   const getLimitedTitle = (title) => {
     const words = title.split(' ');
@@ -35,25 +39,28 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <Link to={`/product/` + product.id} className="nav-link">
-      <Card className="product-card">
+
+    <Card className="product-card">
+      <Link to={`/product/` + product.id} className="nav-link">
         <Card.Img variant="top" src={product.image} className="product-image" />
-        <Card.Body>
+      </Link>
+      <Card.Body>
+        <Link to={`/product/` + product.id} className="nav-link">
           <Card.Title className='card-title'>{getLimitedTitle(product.title)}</Card.Title>
           <Card.Text className='card-desc'>
             {getLimitedDesc(product.description)}
           </Card.Text>
-          <div className='d-flex mb-3'>
+          <div className='mb-3 card-price-rating'>
             <h6 className='text-muted me-3'><Icon.CurrencyRupee />{product.price}</h6>
             {renderStars(product.rating.rate)}
           </div>
-          <Button variant="success" className="w-100">
-            Add to cart
-            <Icon.Bag className="ms-2" />
-          </Button>
-        </Card.Body>
-      </Card>
-    </Link>
+        </Link>
+        <Button onClick={() => addToCart(product)} variant="success" className="w-100">
+          Add to cart
+          <Icon.Bag className="ms-2" />
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

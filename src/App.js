@@ -5,18 +5,31 @@ import './Style/App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ProductProvider } from './Context/ProductContext';
 import Product from './Pages/Product';
+import CartProvider from './Context/CartContext';
+import Cart from './Pages/Cart';
+import Men from './Pages/Men';
+import Women from './Pages/Women';
+import Jewelery from './Pages/Jewelery';
+import Contact from './Pages/Contact';
 
 function App() {
   return (
     <ProductProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/product/:id' element={<Product />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/men' element={<Men />} />
+            <Route path='/women' element={<Women />} />
+            <Route path='/jewelery' element={<Jewelery />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/product/:id' element={<Product />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </CartProvider>
     </ProductProvider>
   );
 }

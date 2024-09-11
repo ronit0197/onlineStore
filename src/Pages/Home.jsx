@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      <Header title="Exclusive offers for you" image="/Assets/Images/header.png" />
       <Categories products={products} loading={loading} error={error} title="Popular products" />
     </div>
   )

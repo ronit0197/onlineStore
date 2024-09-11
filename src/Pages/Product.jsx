@@ -46,7 +46,13 @@ const Product = () => {
     if (!product) {
         return (
             <Container className='d-flex justify-content-center align-items-center py-5'>
-                <Spinner animation="grow" role="status">
+                <Spinner animation="grow" size="sm" role="status" className='mx-2'>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+                <Spinner animation="grow" size="sm" role="status" className='mx-2'>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+                <Spinner animation="grow" size="sm" role="status" className='mx-2'>
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             </Container>

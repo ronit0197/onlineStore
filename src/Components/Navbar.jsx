@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import { Link, useLocation } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext';
 
 const Navbar = () => {
   const location = useLocation();
@@ -9,6 +10,8 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   const [menuSystem, setSystem] = useState("close");
+
+  const { cart } = useContext(CartContext);
 
   return (
     <div className='navbar'>
@@ -20,31 +23,31 @@ const Navbar = () => {
       <div className='nav-menu me-3'>
         <ul className={menuSystem === 'open' ? 'navlinks open' : 'navlinks close'}>
           <li>
-            <Link className='link' to='/'>
+            <Link className='link' to='/' onClick={() => { setSystem("close") }}>
               Home
             </Link>
             {isActive('/') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
-            <Link className='link' to='/men'>
+            <Link className='link' to='/men' onClick={() => { setSystem("close") }}>
               Men
             </Link>
             {isActive('/men') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
-            <Link className='link' to='/women'>
+            <Link className='link' to='/women' onClick={() => { setSystem("close") }}>
               Women
             </Link>
             {isActive('/women') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
-            <Link className='link' to='/jewelery'>
+            <Link className='link' to='/jewelery' onClick={() => { setSystem("close") }}>
               Jewelery
             </Link>
             {isActive('/jewelery') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
-            <Link className='link' to='/contact'>
+            <Link className='link' to='/contact' onClick={() => { setSystem("close") }}>
               Contact Us
             </Link>
             {isActive('/contact') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
@@ -58,7 +61,10 @@ const Navbar = () => {
           <Link className='link' to='/search'><Icon.Search className='menu-icons' color='black' size={20} /></Link>
           <Link className='link' to='/cart' size={20}>
             <div className='cart'>
-              <span className='cart-total bg-success'>2</span>
+              {
+                cart.length > 0 &&
+                <span className='cart-total bg-success'>{cart.length}</span>
+              }
               <Icon.Bag color='black' size={20} />
             </div>
           </Link>
