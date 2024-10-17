@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import CartLine from '../Components/CartLine'
 import { Link } from 'react-router-dom'
 import * as Icon from 'react-bootstrap-icons'
-import { CartContext } from '../Context/CartContext';
-
+import { CartContext } from '../Context/CartContext'
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity } = useContext(CartContext);

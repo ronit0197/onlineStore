@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons'
 import Spinner from 'react-bootstrap/Spinner';
+import { CartContext } from '../Context/CartContext';
 
 const Product = () => {
+
+    const { addToCart } = useContext(CartContext);
 
     let { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -83,7 +86,7 @@ const Product = () => {
                         {renderStars(product.rating.rate)}
                     </div>
                     <div className='mt-4'>
-                        <button className='btn btn-success w-100 p-2'>
+                        <button onClick={() => addToCart(product)} className='btn btn-success w-100 p-2'>
                             <Icon.Cart3 className='me-3' size={20} />
                             Add to Cart
                         </button>
