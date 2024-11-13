@@ -29,24 +29,6 @@ const Navbar = () => {
             {isActive('/') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
-            <Link className='link' to='/men' onClick={() => { setSystem("close") }}>
-              Men
-            </Link>
-            {isActive('/men') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
-          </li>
-          <li>
-            <Link className='link' to='/women' onClick={() => { setSystem("close") }}>
-              Women
-            </Link>
-            {isActive('/women') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
-          </li>
-          <li>
-            <Link className='link' to='/jewelery' onClick={() => { setSystem("close") }}>
-              Jewelery
-            </Link>
-            {isActive('/jewelery') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
-          </li>
-          <li>
             <Link className='link' to='/contact' onClick={() => { setSystem("close") }}>
               Contact Us
             </Link>

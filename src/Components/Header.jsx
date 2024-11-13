@@ -13,7 +13,7 @@ const Header = ({ title, image }) => {
             Shirts, Pants, Trousars, T-Shirts, Printed T-Shirts<br />
             Joggers, Full T-Shirts, Full Shirts, Half Shirts<br /> and many more...
           </p>
-          <button className='custom-btn'>Latest Collection <Icon.ArrowRight /></button>
+          <button className='custom-btn'>Explore Categories <Icon.ArrowRight /></button>
         </div>
         <div className="col-6">
           <img src={image} alt="Header_img" className='w-100' />

@@ -13,7 +13,7 @@ export const ProductProvider = ({ children }) => {
         // Fetch data from the API
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://fakestoreapi.com/products');
+                const response = await axios.get('https://dummyjson.com/products?limit=200');
                 setProducts(response.data);
             } catch (err) {
                 setError(err.message);

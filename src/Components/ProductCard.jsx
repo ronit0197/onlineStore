@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
     return (
-      <>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
         {[...Array(fullStars)].map((_, i) => (
           <Icon.StarFill key={i} color='orange' />
         ))}
@@ -34,31 +34,44 @@ const ProductCard = ({ product }) => {
         {[...Array(emptyStars)].map((_, i) => (
           <Icon.Star key={i} color='orange' />
         ))}
-      </>
+      </div>
     );
   };
 
+  const productPrice = (parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discountPercentage) / 100))).toFixed(2)
+
   return (
 
-    <Card className="product-card">
+    <Card className="product-card shadow-sm">
       <Link to={`/product/` + product.id} className="nav-link">
-        <Card.Img variant="top" src={product.image} className="product-image" />
+        <Card.Img variant="top" src={product.thumbnail} className="product-image" />
       </Link>
       <Card.Body>
-        <Link to={`/product/` + product.id} className="nav-link">
+        <Link to={`/product/` + product.id} className="nav-link mb-3">
+          <span className='text-muted sku mb-3 fw-bold'>{product.brand}</span>
           <Card.Title className='card-title'>{getLimitedTitle(product.title)}</Card.Title>
           <Card.Text className='card-desc'>
             {getLimitedDesc(product.description)}
           </Card.Text>
-          <div className='mb-3 card-price-rating'>
-            <h6 className='text-muted me-3'><Icon.CurrencyRupee />{product.price}</h6>
-            {renderStars(product.rating.rate)}
+          <div className='mb-1 card-price-rating'>
+            <h6 className='text-dark me-3'><Icon.CurrencyDollar />{productPrice}</h6>
+            <h6 className='text-muted text-decoration-line-through'><Icon.CurrencyDollar />{product.price}</h6>
           </div>
+          <p className='text-muted sku'>SKU - {product.sku}</p>
+          {renderStars(product.rating)}
         </Link>
-        <Button onClick={() => addToCart(product)} variant="success" className="w-100">
-          Add to cart
-          <Icon.Bag className="ms-2" />
-        </Button>
+        {
+          product.stock > 0
+            ?
+            <Button onClick={() => addToCart(product)} variant="success" className="w-100">
+              Add to cart
+              <Icon.Bag className="ms-2" />
+            </Button>
+            :
+            <Button variant="muted" className="w-100" disabled>
+              Out of Stock
+            </Button>
+        }
       </Card.Body>
     </Card>
   );
