@@ -63,7 +63,7 @@ const ProductCard = ({ product }) => {
         {
           product.stock > 0
             ?
-            <Button onClick={() => addToCart(product)} variant="success" className="w-100">
+            <Button onClick={() => addToCart(product, productPrice)} variant="success" className="w-100">
               Add to cart
               <Icon.Bag className="ms-2" />
             </Button>

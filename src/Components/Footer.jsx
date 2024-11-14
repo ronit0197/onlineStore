@@ -32,7 +32,7 @@ const Footer = () => {
         </Row>
         <Row className="pt-3 mt-3 border-top">
           <Col className="text-center">
-            <p className="text-dark after-footer">&copy; 2024 Company Name. All rights reserved.</p>
+            <p className="text-dark after-footer">&copy; 2024 Urban Basket. All rights reserved.</p>
           </Col>
         </Row>
       </Container>

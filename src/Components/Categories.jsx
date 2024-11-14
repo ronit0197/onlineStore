@@ -19,7 +19,7 @@ const Categories = ({ products, loading, error, title }) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <Container className='my-3'>
+    <Container className='my-4'>
       <h6 className='my-lg-0 my-md-3 my-3 fw-bold'>{title}</h6>
       <div className='bg-success p-1 rounded mt-lg-3 mt-md-0 mt-0'></div>
       <div className='row mt-3'>

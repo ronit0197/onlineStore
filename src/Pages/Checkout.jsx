@@ -32,8 +32,8 @@ const Checkout = () => {
     const [phoneNo, setPhoneNo] = useState('')
 
 
-    const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
-    const grandTotal = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
+    const total = cart.reduce((sum, product) => sum + product.productPrice * product.quantity, 0);
+    const grandTotal = cart.reduce((sum, product) => sum + product.productPrice * product.quantity, 0);
     const totalWithShipping = parseFloat((grandTotal + 50 + 0.25).toFixed(2));
 
     let products = [];
@@ -42,11 +42,10 @@ const Checkout = () => {
         products.push({
             id: product.id,
             product: product.title,
-            image: product.image[0],
+            image: product.images[0],
             sku: product.sku,
-            price: product.price,
-            quantity: product.quantity,
-            stockQty: product.stockQty
+            price: product.productPrice,
+            quantity: product.quantity
         })
 
         return 0;
@@ -99,6 +98,8 @@ const Checkout = () => {
 
 
     }
+
+    console.log("Cart:", cart)
 
     if (cart.length === 0) {
 
@@ -184,7 +185,7 @@ const Checkout = () => {
                                                 <div className='card mb-2'>
                                                     <div className='row p-3'>
                                                         <div className='col-md-4'>
-                                                            <img src={product.image} className='img-fluid rounded-start' alt={product.image} />
+                                                            <img src={product.thumbnail} className='img-fluid rounded-start' alt={product.image} />
                                                         </div>
                                                         <div className='col-md-8'>
                                                             <div className='card-body'>
@@ -193,7 +194,7 @@ const Checkout = () => {
                                                                         <h5 className='card-title'>{product.title}</h5>
                                                                     </div>
                                                                     <div className='col-lg-4 cart-line-amount'>
-                                                                        <h5>₹ {product.price}</h5>
+                                                                        <h5>₹ {product.productPrice}</h5>
                                                                     </div>
                                                                 </div>
                                                                 <div>

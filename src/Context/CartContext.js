@@ -26,7 +26,7 @@ const CartProvider = ({ children }) => {
         setPopupVisible(false);
     };
 
-    const addToCart = (product) => {
+    const addToCart = (product, productPrice) => {
         setCart((prevCart) => {
             const existingProduct = prevCart.find(item => item.id === product.id);
             if (existingProduct) {
@@ -35,7 +35,7 @@ const CartProvider = ({ children }) => {
                 );
             } else {
                 showPopup(`${product.title} added to the cart`);
-                return [...prevCart, { ...product, quantity: 1 }];
+                return [...prevCart, { ...product, productPrice, quantity: 1 }];
             }
         });
     };

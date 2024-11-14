@@ -16,8 +16,8 @@ const Cart = () => {
     const gst = 0.25;
     const shipping = 50;
 
-    const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
-    const grandTotal = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
+    const total = cart.reduce((sum, product) => sum + product.productPrice * product.quantity, 0);
+    const grandTotal = cart.reduce((sum, product) => sum + product.productPrice * product.quantity, 0);
     const totalWithShipping = parseFloat((grandTotal + shipping + gst).toFixed(2));
 
     return (

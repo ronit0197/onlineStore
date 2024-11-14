@@ -201,6 +201,29 @@ input[type='number'] {
     }
 }
 
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 @keyframes fadeIn {
     from {
@@ -366,11 +389,11 @@ input[type='number'] {
     width: 100px;
 }
 
-.review-email{
+.review-email {
     font-size: 10px;
 }
 
-.card-body{
+.card-body {
     font-size: 12px;
 }
 
@@ -466,5 +489,9 @@ input[type='number'] {
 
     .info-qr {
         width: 70px;
+    }
+
+    .slider-link {
+        font-size: 12px !important;
     }
 }
