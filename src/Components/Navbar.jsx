@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import { Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext';
+import { useAuth } from '../Context/AuthContext';
 
 const Navbar = () => {
+
+  const { currentUser } = useAuth();
   const location = useLocation();
 
   // Helper function to determine if the link is active
@@ -29,6 +32,12 @@ const Navbar = () => {
             {isActive('/') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
           </li>
           <li>
+            <Link className='link' to='/orders' onClick={() => { setSystem("close") }}>
+              Orders
+            </Link>
+            {isActive('/orders') ? <div className='menu-divider active'></div> : <div className='menu-divider'></div>}
+          </li>
+          <li>
             <Link className='link' to='/contact' onClick={() => { setSystem("close") }}>
               Contact Us
             </Link>
@@ -39,7 +48,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className='icons'>
-          <Link className='link' to='/login'><Icon.PersonCircle className='menu-icons' color='black' size={20} /></Link>
+          <Link className='link' to={`${currentUser === null ? '/login' : '/account'}`}><Icon.PersonCircle className='menu-icons' color='black' size={20} /></Link>
           <Link className='link' to='/search'><Icon.Search className='menu-icons' color='black' size={20} /></Link>
           <Link className='link' to='/cart' size={20}>
             <div className='cart'>

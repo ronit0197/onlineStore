@@ -1,9 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import CartPopUp from '../Components/CartPopUp'
 import { CartContext } from '../Context/CartContext';
+import { useAuth } from '../Context/AuthContext';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../Database/Firebase';
 
 const Checkout = () => {
+
+    const { currentUser } = useAuth();
 
     const [popupVisible, setPopupVisible] = useState(false); // For showing popup
     const [popupMessage, setPopupMessage] = useState(''); // Popup message
@@ -73,33 +78,49 @@ const Checkout = () => {
             return;
         }
 
-        // const order = {
-        //     address: {
-        //         email: email,
-        //         name: name,
-        //         address: address,
-        //         house_no: houseNo,
-        //         city: city,
-        //         state: state,
-        //         district: district,
-        //         pincode: pincode,
-        //         phone_no: phoneNo
-        //     },
-        //     products: products,
-        //     method: "COD"
-        // }
+        const order = {
+            email: email,
+            address: {
+                email,
+                name,
+                address,
+                houseNo,
+                city,
+                state,
+                district,
+                pincode,
+                phoneNo
+            },
+            products,
+            method: "COD",
+            total: totalWithShipping,
+            createdAt: new Date().toISOString()
+        };
 
-        localStorage.removeItem('cart');
-
-        setTimeout(() => {
-            emptyCart()
-            navigate('/'); // Navigate to Order details page after successfull order
-        }, 2000);
+        try {
+            const docRef = await addDoc(collection(db, "orders"), order);
+            showPopup(`Order placed! ID: ${docRef.id}`);
+            setTimeout(() => {
+                localStorage.removeItem('cart');
+                emptyCart();
+                navigate('/');
+            }, 3000);
+        } catch (error) {
+            showPopup("Failed to place order. Try again!");
+            console.error("Error adding order: ", error);
+        }
 
 
     }
 
-    console.log("Cart:", cart)
+    useEffect(() => {
+
+        if (currentUser != null) {
+            setEmail(currentUser.email)
+        }
+
+    }, [currentUser])
+
 
     if (cart.length === 0) {
 

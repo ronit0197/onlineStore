@@ -120,7 +120,7 @@ const Product = () => {
                         {
                             product?.stock > 0
                                 ?
-                                <button onClick={() => addToCart(product)} className='btn btn-success w-100 p-2'>
+                                <button onClick={() => addToCart(product, productPrice)} className='btn btn-success w-100 p-2'>
                                     <Icon.Cart3 className='me-3' size={20} />
                                     Add to Cart
                                 </button>

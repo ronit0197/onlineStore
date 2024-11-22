@@ -397,6 +397,13 @@ input[type='number'] {
     font-size: 12px;
 }
 
+.auth-container {
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 // Footer start
 .footer {
     background-image: linear-gradient(rgb(255, 255, 255), $header-gradiant1);
@@ -493,5 +500,11 @@ input[type='number'] {
 
     .slider-link {
         font-size: 12px !important;
+    }
+
+    .page-section {
+        .order-font {
+            font-size: 12px;
+        }
     }
 }
