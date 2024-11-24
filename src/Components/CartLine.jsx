@@ -19,7 +19,7 @@ const CartLine = ({ product, handleQuantityChange, removeFromCart }) => {
                                 <span className='text-muted'>SKU - {product.sku}</span>
                             </div>
                             <div className='col-lg-4 cart-line-amount'>
-                                <h5>₹ {product.productPrice}</h5>
+                                <h5><Icon.CurrencyDollar />{product.productPrice}</h5>
                             </div>
                         </div>
                         <div className='mt-5 d-flex justify-content-between align-items-center'>

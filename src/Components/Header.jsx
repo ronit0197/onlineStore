@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
+import { Link } from 'react-router-dom'
 
 const Header = ({ title, image }) => {
   return (
@@ -13,7 +14,7 @@ const Header = ({ title, image }) => {
             Shirts, Pants, Trousars, T-Shirts, Printed T-Shirts<br />
             Joggers, Full T-Shirts, Full Shirts, Half Shirts<br /> and many more...
           </p>
-          <button className='custom-btn'>Explore Categories <Icon.ArrowRight /></button>
+          <Link to="/categories" className='btn custom-btn'>Explore Categories <Icon.ArrowRight /></Link>
         </div>
         <div className="col-6">
           <img src={image} alt="Header_img" className='w-100' />

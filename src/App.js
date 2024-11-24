@@ -15,6 +15,12 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Account from './Pages/Auth/Account';
 import Orders from './Pages/Auth/Orders';
+import Order from './Pages/Auth/Order';
+import Search from './Pages/Search';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import FAQ from './Pages/FAQ';
+import ShippingAndReturn from './Pages/ShippingAndReturn';
+import Categories from './Pages/Categories';
 
 function App() {
   return (
@@ -34,6 +40,12 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/account' element={<Account />} />
               <Route path='/orders' element={<Orders />} />
+              <Route path='/order/:id' element={<Order />} />
+              <Route path='/search/:s' element={<Search />} />
+              <Route path='/privecy' element={<PrivacyPolicy />} />
+              <Route path='/faq' element={<FAQ />} />
+              <Route path='/shipping' element={<ShippingAndReturn />} />
+              <Route path='/categories' element={<Categories />} />
             </Routes>
             <Footer />
           </BrowserRouter>

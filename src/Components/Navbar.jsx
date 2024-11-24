@@ -49,7 +49,7 @@ const Navbar = () => {
         </ul>
         <div className='icons'>
           <Link className='link' to={`${currentUser === null ? '/login' : '/account'}`}><Icon.PersonCircle className='menu-icons' color='black' size={20} /></Link>
-          <Link className='link' to='/search'><Icon.Search className='menu-icons' color='black' size={20} /></Link>
+          <Link className='link' to='/search/all'><Icon.Search className='menu-icons' color='black' size={20} /></Link>
           <Link className='link' to='/cart' size={20}>
             <div className='cart'>
               {

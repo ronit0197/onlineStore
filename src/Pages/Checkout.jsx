@@ -103,7 +103,7 @@ const Checkout = () => {
             setTimeout(() => {
                 localStorage.removeItem('cart');
                 emptyCart();
-                navigate('/');
+                navigate('/order/' + docRef.id);
             }, 3000);
         } catch (error) {
             showPopup("Failed to place order. Try again!");
@@ -115,11 +115,13 @@ const Checkout = () => {
 
     useEffect(() => {
 
-        if (currentUser != null) {
+        if (currentUser === null) {
+            navigate('/login')
+        } else {
             setEmail(currentUser.email)
         }
 
-    }, [currentUser])
+    }, [currentUser, navigate])
 
 
     if (cart.length === 0) {

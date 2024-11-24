@@ -5,7 +5,7 @@ import { db } from '../../Database/Firebase';
 import { Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import * as Icon from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const fetchOrdersByEmail = async (email) => {
 
@@ -32,6 +32,8 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
     const { currentUser } = useAuth();
 
+    const navigate = useNavigate();
+
     const formatDate = (isoString) => {
         const date = new Date(isoString);
         return date.toLocaleString('en-US', {
@@ -41,6 +43,11 @@ const Orders = () => {
     };
 
     useEffect(() => {
+
+        if (currentUser === null) {
+            navigate('/login')
+        }
+
         const fetchOrders = async () => {
             if (currentUser && currentUser.email) {
                 const fetchedOrders = await fetchOrdersByEmail(currentUser.email);
@@ -49,10 +56,7 @@ const Orders = () => {
         };
 
         fetchOrders();
-    }, [currentUser]);
-
-
-    console.log("Orders:", orders)
+    }, [currentUser, navigate]);
 
     return (
         <Container className='mt-4 p-3 page-section'>
@@ -71,7 +75,7 @@ const Orders = () => {
                     {
                         orders.map((order, i) => (
                             <tr>
-                                <td>{i+1}</td>
+                                <td>{i + 1}</td>
                                 <td className='order-font'>{formatDate(order.createdAt)}</td>
                                 <td className='order-font'><Icon.CurrencyDollar />{order.total}</td>
                                 <td className='order-font'>{order.method}</td>
